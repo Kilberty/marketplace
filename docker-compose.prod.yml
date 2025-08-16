@@ -25,13 +25,14 @@ services:
     nginx:
         image: 'nginx:alpine'
         ports:
+            # Mapeia a porta 8000 da sua máquina para a porta 80 do contêiner Nginx.
+            # Se a porta 8000 estiver ocupada, mude para outra, como 8080.
             - '8000:80'
-            - '443:443' # Para SSL/HTTPS em produção
         volumes:
             # Mapeie a pasta public da sua aplicação para o Nginx
             - './public:/var/www/html/public'
-            # Copie o arquivo de configuração do Nginx (você deve criar este arquivo)
-            - './docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+            # AQUI: O mapeamento corrigido para o arquivo na RAIZ.
+            - './nginx.conf:/etc/nginx/conf.d/default.conf'
         networks:
             - sail
         depends_on:
