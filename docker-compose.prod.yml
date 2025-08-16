@@ -25,7 +25,7 @@ services:
     nginx:
         image: 'nginx:alpine'
         ports:
-            - '80:80'
+            - '8000:80'
             - '443:443' # Para SSL/HTTPS em produção
         volumes:
             # Mapeie a pasta public da sua aplicação para o Nginx
